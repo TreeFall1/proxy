@@ -10,7 +10,7 @@ module.exports = async (req, res) => {
     return res.status(200).end(); // preflight
   }
 
-  const { steamId = 0 } = req.query;
+  const { steamId = 11 } = req.query;
 
   if (!steamId) {
     return res.status(400).json({ error: 'Missing steamId' });
