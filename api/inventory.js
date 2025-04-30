@@ -1,6 +1,15 @@
 const axios = require('axios');
 
 module.exports = async (req, res) => {
+  // CORS-заголовки
+  res.setHeader('Access-Control-Allow-Origin', '*'); // или ограничь конкретным доменом
+  res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+
+  if (req.method === 'OPTIONS') {
+    return res.status(200).end(); // preflight
+  }
+
   const { steamId, count = 5000 } = req.query;
 
   if (!steamId) {
